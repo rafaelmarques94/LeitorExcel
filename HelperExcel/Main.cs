@@ -6,11 +6,21 @@ using System.Windows.Forms;
 
 namespace HelperExcel
 {
-    public partial class Form1 : Form
+    public partial class Main : Form
     {
-        public Form1()
+
+        OpenFileDialog ofdSelecionarArquivo;
+
+        public Main()
         {
             InitializeComponent();
+
+            ofdSelecionarArquivo = new OpenFileDialog()
+            {
+                FileName = "",
+                Filter = "Arquivos de Excel (*.xls)|*.xlsx",
+                Title = "Selecione um Excel"
+            };
         }
 
         private DataSet ConexaoPlanilha(string caminho)
@@ -41,8 +51,6 @@ namespace HelperExcel
         {
             // Limpa os itens do listBox
             listBox1.Items.Clear();
-
-            OpenFileDialog ofdSelecionarArquivo = new OpenFileDialog();
 
             if (ofdSelecionarArquivo.ShowDialog() == DialogResult.OK)
             {
